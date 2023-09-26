@@ -27,7 +27,7 @@ function loadTrack(trackIndex) {
     curr_track.load();
 
     track_art.style.backgroundImage = "url(" + musicList[trackIndex].cover + ")";
-    track_art.style.backgroundSize = "cover";
+    track_art.style.backgroundSize = "250px 250px";
 
     updateTimer = setInterval(setUpdate, 1000);
 }
@@ -117,5 +117,3 @@ function setUpdate() {
 }
 
 loadTrack(track_index);
-
-
