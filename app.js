@@ -1,5 +1,7 @@
 let now_playing = document.querySelector('.now-playing');
 let track_art = document.querySelector('.track-art');
+let track_title = document.querySelector('.track-title');
+let track_artist = document.querySelector('.track-artist');
 
 let playpause_btn = document.querySelector('.playpause-track');
 let next_btn = document.querySelector('.next-track');
@@ -29,8 +31,19 @@ function loadTrack(trackIndex) {
     track_art.style.backgroundImage = "url(" + musicList[trackIndex].cover + ")";
     track_art.style.backgroundSize = "250px 250px";
 
+
     updateTimer = setInterval(setUpdate, 1000);
 }
+
+let selectedTrackDropdown = document.querySelector('#selected_track');
+selectedTrackDropdown.addEventListener('change', function () {
+    let selectedTrackIndex = parseInt(selectedTrackDropdown.value);
+    if (!isNaN(selectedTrackIndex)) {
+        track_index = selectedTrackIndex;
+        loadTrack(track_index);
+        playTrack();
+    }
+});
 
 function handleTrackEnded() {
     nextTrack();

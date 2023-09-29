@@ -1,17 +1,39 @@
 <?php
-session_start(); // Iniciar la sesión
+session_start();
 
-// Verificar si existe la variable de sesión 'nombre'
 if (isset($_SESSION['nombre'])) {
     $nombre = $_SESSION['nombre'];
 } else {
-    $nombre = 'Log In'; // Texto predeterminado si no se ha iniciado sesión
+    $nombre = 'Log In';
 }
 
-$json_file = 'playlist/playlist-1.json';
-$json_data = file_get_contents($json_file);
-$music_data = json_decode($json_data, true);
+$playlist_dir = 'playlist/';
+$playlist_files = glob($playlist_dir . '*.json');
+
+if (isset($_GET['selected_playlist'])) {
+    $selected_playlist = $_GET['selected_playlist'];
+} else {
+    $selected_playlist = '';
+}
+
+if (!empty($selected_playlist) && in_array($selected_playlist, $playlist_files)) {
+    $json_data = file_get_contents($selected_playlist);
+    $music_data = json_decode($json_data, true);
+} else {
+    if (!empty($playlist_files)) {
+        $json_data = file_get_contents($playlist_files[0]);
+        $music_data = json_decode($json_data, true);
+    } else {
+
+        $music_data = array();
+    }
+}
+
+$music_data_js = json_encode($music_data);
 ?>
+
+
+
 
 
 <!DOCTYPE html>
@@ -20,30 +42,36 @@ $music_data = json_decode($json_data, true);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css" type="text/css">
-    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="img/favicon.png" type="image/x-icon">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <title>La Gramola</title>
 </head>
 <body>
+
     <div class="container">
 
-        <div class="container-A">
+        <div class="">
 
             <div class="container-logIn">
-                <!-- Cambiar el texto del enlace por el nombre -->
-                <a href="LogIn.php"><?php echo $nombre; ?></a>
+
+            <a href="LogIn.php"><?php echo $nombre; ?></a>
+
             </div>
+
+
             <!-- Resto de tu código HTML existente -->
 
             <div class="track-art"></div>
+            <div class="track-title"></div>
+            <div class="track-artist"></div>
 
             <div class="control-box">
 
                 <div class="slider-container">
 
                     <div class="current-time">00:00</div>
-                    <input type="range" min="1" max="100" value="0" class="seek-slider" onchange="seekTo()">
+                    <input type="range" min="0" max="100" value="0" class="seek-slider" onchange="seekTo()">
                     <div class="total-duration">00:00</div>
 
                 </div>
@@ -72,34 +100,48 @@ $music_data = json_decode($json_data, true);
 
                 </div>
 
-                <div class="slider-container-2">
+                <div class="song-volume">
 
-                        <i class="fa fa-volume-down"></i>
-                        <input type="range" min="1" max="100" value="100" class="volume-slider">
-                        <i class="fa fa-volume-up"></i>
+                <div class="select-song">
+
+                    <select name="selected_track"  id="selected_track" class="selected-song">
+                        <?php foreach ($music_data as $index => $track) : ?>
+                            <option value="<?php echo $index; ?>"><?php echo $track['title']; ?></option>
+                        <?php endforeach; ?>
+                    </select>
 
                 </div>
 
-                
+                <div class="form-playlist">
+
+                    <form method="get" action="index.php">
+                            <select name="selected_playlist" id="selected_playlist" class="">
+                                <?php foreach ($playlist_files as $playlist_file) : ?>
+                                    <option value="<?php echo $playlist_file; ?>" <?php echo ($selected_playlist == $playlist_file) ? 'selected' : ''; ?>>
+                                        <?php echo basename($playlist_file); ?>
+                                    </option>
+                                <?php endforeach; ?>
+                            </select>
+                            <input type="submit" value="Cargar Playlist">
+                    </form>
+
+                </div>
+
+
+
+
+                </div>
+
 
             </div>
 
 
         </div>
-
-
-        <div class="container-B">
-
-
-
-
-
-
-        </div>
-
     </div>
+   
+
     <script>
-    var musicList = <?php echo json_encode($music_data); ?>;
+        var musicList = <?php echo $music_data_js; ?>;
     </script>
     <script src="app.js"></script>
 

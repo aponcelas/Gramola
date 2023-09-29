@@ -2,24 +2,25 @@ body {
     background-image: url("/img/Fons.jpg");
     background-repeat: no-repeat;
     background-size: cover;
-    justify-content: center;
-    align-items: center;
     font-family: system-ui;
     height: 100vh;
-    margin: 0;
+    margin: 0 auto;
 }
 
 .container {
     display: flex;
-    flex-wrap: wrap;
+    align-items: center;
     justify-content: center;
+    width: 100%;
+    height: 100%;
 }
 
-.container-A, .container-B, .container-form {
+.container-A {
     display: flex;
     flex-direction: column;
     align-items: center;
     box-sizing: border-box;
+    width: 70%;
     background: transparent;
     backdrop-filter: blur(20px);
     border: 2px solid rgba(255, 255, 255, .2);
@@ -27,16 +28,6 @@ body {
     margin-right: 1%;
     border-radius: 20px;
     box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
-}
-
-.container-A {
-    flex-basis: 50%;
-    margin-top: 125px;
-}
-
-.container-B {
-    flex-basis: 20%;
-    margin-top: 125px;
 }
 
 .container-form {
@@ -138,7 +129,7 @@ i {
 
 .container-logIn {
     align-self: flex-start;
-    margin-left: 30px;
+    margin-left: 20px;
     margin-top: 20px;
 }
 
@@ -170,41 +161,28 @@ i {
 }
 
 
-
-
-
-
-
-
-/* .container-form {
+.select-song {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    box-sizing: border-box;
-    background: transparent;
-    backdrop-filter: blur(20px);
-    border: 2px solid rgba(255, 255, 255, .2);
-    box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
-    border-radius: 20px;
-    width: 72%;
+    margin: 20px; 
 }
 
-.container-form input {
-    width: 100%;
-    height: 100%;
+.selected-song { 
     background: transparent;
-    border: none;
     outline: none;
-    border: 2px solid rgba(255, 255, 255, .2);
-    border-radius: 40px;
+    border: none;
+    padding: 5px; 
+    border-radius: 5px; 
+    width: 200px; 
     font-size: 16px;
-    color: #FFF;
-    padding: 10px 15px 10px 10px;
+    font-weight: bold;
+    background-clip: text;
+    background-image: linear-gradient(110deg, #B301FF, #FF019A 60%);
+    -webkit-background-clip: text;
+    color: transparent;
 }
 
-.container-form input::placeholder {
-    color: #FFF;
-} */
-
-
-
+.selected-song option {
+    color: #000; 
+    font-size: 14px;  
+}
