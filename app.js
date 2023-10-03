@@ -11,7 +11,7 @@ let seek_slider = document.querySelector('.seek-slider');
 let curr_time = document.querySelector('.current-time');
 let total_duration = document.querySelector('.total-duration');
 
-let curr_track = document.createElement('audio');
+let curr_track = new Audio();
 
 let randomIcon = document.querySelector('.fa-random');
 
@@ -19,6 +19,11 @@ let track_index = 0;
 let isPlaying = false;
 let isRandom = false;
 let updateTimer;
+
+playpause_btn.addEventListener('click', playpauseTrack);
+next_btn.addEventListener('click', nextTrack);
+prev_btn.addEventListener('click', prevTrack);
+randomIcon.addEventListener('click', randomTrack);
 
 function loadTrack(trackIndex) {
     clearInterval(updateTimer);
@@ -31,9 +36,17 @@ function loadTrack(trackIndex) {
     track_art.style.backgroundImage = "url(" + musicList[trackIndex].cover + ")";
     track_art.style.backgroundSize = "250px 250px";
 
-
     updateTimer = setInterval(setUpdate, 1000);
+
+    playpause_btn.classList.remove('inactive-button');
 }
+
+
+let selectedPlaylistDropdown = document.querySelector('#selected_playlist');
+    selectedPlaylistDropdown.addEventListener('change', function () {
+        let selectedPlaylist = selectedPlaylistDropdown.value;
+        window.location.href = 'index.php?selected_playlist=' + selectedPlaylist;
+    });
 
 let selectedTrackDropdown = document.querySelector('#selected_track');
 selectedTrackDropdown.addEventListener('change', function () {
@@ -50,8 +63,8 @@ function handleTrackEnded() {
 }
 
 function reset() {
-    curr_time.textContent = "00:00";
-    total_duration.textContent = "00:00";
+    curr_time.textContent = "0:00";
+    total_duration.textContent = "0:00";
     seek_slider.value = 0;
 }
 
@@ -73,6 +86,14 @@ function playpauseTrack() {
     isPlaying ? pauseTrack() : playTrack();
 }
 
+function repeatTrack() {
+    if (isPlaying || !isPlaying) {
+        curr_track.currentTime = 0;
+        seek_slider.value = 0;
+        curr_time.textContent = "0:00";
+    }
+}
+
 function playTrack() {
     curr_track.play();
     isPlaying = true;
@@ -83,6 +104,7 @@ function pauseTrack() {
     curr_track.pause();
     isPlaying = false;
     playpause_btn.innerHTML = '<i class="fa fa-play-circle fa-2x"></i>';
+    playpause_btn.classList.add('inactive-button');
 }
 
 function nextTrack() {

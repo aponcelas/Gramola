@@ -15,23 +15,60 @@ body {
     height: 100%;
 }
 
-.container-A {
+.container-card {
     display: flex;
     flex-direction: column;
     align-items: center;
-    box-sizing: border-box;
     width: 70%;
     background: transparent;
     backdrop-filter: blur(20px);
-    border: 2px solid rgba(255, 255, 255, .2);
-    margin-left: 1%;
-    margin-right: 1%;
     border-radius: 20px;
+    border: 2px solid rgba(255, 255, 255, .2);
     box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
 }
 
-.container-form {
-    margin-top: 25%;
+.container-info, .playlist-songs {
+    display: flex;
+    box-sizing: border-box;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.log-in, .selected-song {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-basis: 50%;
+
+}
+
+.personal-info, .selected-playlist {
+    display: flex;
+    justify-content: flex-end;
+    flex-basis: 50%;
+    align-items: center;
+}
+
+.log-in p, .personal-info a {
+    display: flex;
+    align-items: center;
+    background-clip: text;
+    background-image: linear-gradient(110deg, #B301FF, #FF019A 60%);
+    -webkit-background-clip: text;
+    color: transparent;
+    font-weight: bold;
+    text-decoration: none;
+    height: 35px;
+    font-size: 16px;
+    margin: 20px;
+}
+
+.login-button, .logout-button, select, .add-song, .add-playlist {
+    border-radius: 5px;
+    font-size: 16px;
+    padding: 5px;
+    border: 2px solid rgba(255, 255, 255, .2);
+    box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
 }
 
 .track-art {
@@ -39,8 +76,7 @@ body {
     flex-direction: column;
     width: 250px;
     height: 250px;
-    border-radius: 50%;
-    margin-top: 20px;
+    border-radius: 25%;
     margin-bottom: 20px;
 }
 
@@ -48,9 +84,10 @@ body {
     display: flex;
     flex-direction: column;
     width: 100%;
+    margin-bottom: 20px;
 }
 
-.slider-container {
+.audio-slider {
     display: flex;
     justify-content: center;
     margin-top: 20px;
@@ -61,7 +98,7 @@ body {
     background-image: linear-gradient(110deg, #B301FF, #FF019A 60%);
     -webkit-background-clip: text;
     color: transparent;
-    font-size: 15px;
+    font-size: 16px;
     font-weight: bold;
     margin: 5px;
 }
@@ -75,16 +112,18 @@ body {
     width: 70%;
     height: 5px;
     cursor: pointer;
+}
 
-    &::-webkit-slider-thumb {
-        -webkit-appearance: none;
+@-moz-document url-prefix() {
+
+    input[type="range"]::-moz-range-thumb {
         width: 15px;
         height: 15px;
         background-image: linear-gradient(110deg, #B301FF, #FF019A 60%);
         border-radius: 50%;
         cursor: pointer;
-      }
-}
+    }
+  }
 
 .buttons{
     display: flex;
@@ -101,88 +140,115 @@ i {
     margin-left: 10px;
 }
 
-.slider-container-2 {
-    display: flex;
-    align-items: right;
-    justify-content: right;
-    margin: 10px;
-}
-
-.volume-slider {
-    appearance: none;
-    background-color: #FFF;
-    border-radius: 10px;
-    align-self: center;
-    outline: none;
-    height: 5px;
-    cursor: pointer;
-
-    &::-webkit-slider-thumb {
-        -webkit-appearance: none;
-        width: 15px;
-        height: 15px;
-        background-image: linear-gradient(110deg, #B301FF, #FF019A 60%);
-        border-radius: 50%;
-        cursor: pointer;
-      }
-}
-
-.container-logIn {
-    align-self: flex-start;
+.selected-song, .selected-playlist {
+    margin-right: 20px;
     margin-left: 20px;
-    margin-top: 20px;
 }
 
-.container-logIn a {
-    color: #FFF;
-    text-decoration: none;
-}
-
-.container-C {
-    margin-top: 20px;
-    margin-bottom: 20px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
-
-.login-container {
+.container-card-2 {
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 70%;
-    box-sizing: border-box;
+    width: 40%;
     background: transparent;
     backdrop-filter: blur(20px);
-    border: 2px solid rgba(255, 255, 255, .2);
     border-radius: 20px;
+    border: 2px solid rgba(255, 255, 255, .2);
     box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
 }
 
-
-.select-song {
+.login-form {
     display: flex;
     flex-direction: column;
-    margin: 20px; 
+    align-items: center;
 }
 
-.selected-song { 
-    background: transparent;
-    outline: none;
-    border: none;
-    padding: 5px; 
-    border-radius: 5px; 
-    width: 200px; 
-    font-size: 16px;
-    font-weight: bold;
+h1 {
     background-clip: text;
     background-image: linear-gradient(110deg, #B301FF, #FF019A 60%);
     -webkit-background-clip: text;
     color: transparent;
 }
 
-.selected-song option {
-    color: #000; 
-    font-size: 14px;  
+.user {
+    font-size: 16px;
+    outline: none;
+    color: #FFF;
+    padding: 10px;
+    border-radius: 10px;
+    border: 2px solid rgba(255, 255, 255, .2);
+    background: none;
+    margin-bottom: 20px;
+}
+
+.button-login {
+    width: 50%;
+    font-size: 16px;
+    margin-bottom: 20px;
+}
+
+.add-song, .add-playlist {
+    margin-left: 10px;
+}
+
+
+
+
+
+
+
+
+
+/* Formularios */
+
+.form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.label-input {
+    width: 50%;
+    place-items: center;
+}
+
+label {
+    display: flex;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+p {
+    background-clip: text;
+    background-image: linear-gradient(110deg, #B301FF, #FF019A 60%);
+    -webkit-background-clip: text;
+    color: transparent;
+}
+
+.input-text {
+    width: 97%;
+    background: none;
+    border: none;
+    outline: none;
+    border-bottom: 2px solid #fff;
+    margin-bottom: 10px;
+    padding-bottom: 5px;
+    color: #fff;
+}
+
+.input-file {
+    width: 97%;
+    background: none;
+    margin-bottom: 10px;
+    padding-bottom: 5px;
+    color: #fff;
+    font-size: 16px;
+}
+
+.submit-button {
+    display: flex;
+    margin: 30px;
+    font-size: 16px;
 }
