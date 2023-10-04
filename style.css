@@ -1,5 +1,6 @@
+/* Estil per les etiquetes HTML */
 body {
-    background-image: url("/img/Fons.jpg");
+    background-image: url("/Img/Fons.jpg");
     background-repeat: no-repeat;
     background-size: cover;
     font-family: system-ui;
@@ -7,6 +8,29 @@ body {
     margin: 0 auto;
 }
 
+li {
+    color: #fff;
+}
+
+i {
+    background-clip: text;
+    background-image: linear-gradient(110deg, #B301FF, #FF019A 60%);
+    -webkit-background-clip: text;
+    color: transparent;
+    margin-right: 10px;
+    margin-left: 10px;
+}
+
+h1 {
+    background-clip: text;
+    background-image: linear-gradient(110deg, #B301FF, #FF019A 60%);
+    -webkit-background-clip: text;
+    color: transparent;
+}
+/* --- */
+
+
+/* Estil pels 2 contenidors principals */
 .container {
     display: flex;
     align-items: center;
@@ -26,7 +50,10 @@ body {
     border: 2px solid rgba(255, 255, 255, .2);
     box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
 }
+/* --- */
 
+
+/* Estil per als contenidors de LogIn/LogOut i selecció de Playlists/Songs */
 .container-info, .playlist-songs {
     display: flex;
     box-sizing: border-box;
@@ -63,14 +90,18 @@ body {
     margin: 20px;
 }
 
-.login-button, .logout-button, select, .add-song, .add-playlist {
-    border-radius: 5px;
-    font-size: 16px;
-    padding: 5px;
-    border: 2px solid rgba(255, 255, 255, .2);
-    box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
+.selected-song, .selected-playlist {
+    margin-right: 20px;
+    margin-left: 20px;
 }
 
+.add-song, .add-playlist {
+    margin-left: 10px;
+}
+/* --- */
+
+
+/* Estil per la Cover */
 .track-art {
     display: flex;
     flex-direction: column;
@@ -79,14 +110,10 @@ body {
     border-radius: 25%;
     margin-bottom: 20px;
 }
+/* --- */
 
-.control-box {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    margin-bottom: 20px;
-}
 
+/* Estil per a la barra de reproducció */
 .audio-slider {
     display: flex;
     justify-content: center;
@@ -123,62 +150,22 @@ body {
         border-radius: 50%;
         cursor: pointer;
     }
-  }
+}
+/* --- */
+
+
+/* Estil per als butons */
+.control-box {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin-bottom: 20px;
+}
 
 .buttons{
     display: flex;
     justify-content: center;
     margin: 10px;
-}
-
-i {
-    background-clip: text;
-    background-image: linear-gradient(110deg, #B301FF, #FF019A 60%);
-    -webkit-background-clip: text;
-    color: transparent;
-    margin-right: 10px;
-    margin-left: 10px;
-}
-
-.selected-song, .selected-playlist {
-    margin-right: 20px;
-    margin-left: 20px;
-}
-
-.container-card-2 {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 40%;
-    background: transparent;
-    backdrop-filter: blur(20px);
-    border-radius: 20px;
-    border: 2px solid rgba(255, 255, 255, .2);
-    box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
-}
-
-.login-form {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-h1 {
-    background-clip: text;
-    background-image: linear-gradient(110deg, #B301FF, #FF019A 60%);
-    -webkit-background-clip: text;
-    color: transparent;
-}
-
-.user {
-    font-size: 16px;
-    outline: none;
-    color: #FFF;
-    padding: 10px;
-    border-radius: 10px;
-    border: 2px solid rgba(255, 255, 255, .2);
-    background: none;
-    margin-bottom: 20px;
 }
 
 .button-login {
@@ -187,20 +174,17 @@ h1 {
     margin-bottom: 20px;
 }
 
-.add-song, .add-playlist {
-    margin-left: 10px;
+.login-button, .logout-button, select, .add-song, .add-playlist {
+    border-radius: 5px;
+    font-size: 16px;
+    padding: 5px;
+    border: 2px solid rgba(255, 255, 255, .2);
+    box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
 }
+/* --- */
 
 
-
-
-
-
-
-
-
-/* Formularios */
-
+/* Estil per als formularis */
 .form {
     display: flex;
     flex-direction: column;
@@ -220,7 +204,7 @@ label {
     font-weight: bold;
 }
 
-p {
+label p {
     background-clip: text;
     background-image: linear-gradient(110deg, #B301FF, #FF019A 60%);
     -webkit-background-clip: text;
@@ -252,3 +236,50 @@ p {
     margin: 30px;
     font-size: 16px;
 }
+/* --- */
+
+
+/* Estil per al Sound Wave */
+@keyframes quiet {
+    25% { transform: scaleY(.6); }
+    50% { transform: scaleY(.4); }
+    75% { transform: scaleY(.8); }
+}
+  
+@keyframes normal {
+    25% { transform: scaleY(1); }
+    50% { transform: scaleY(.4); }
+    75% { transform: scaleY(.6); }
+}
+
+@keyframes loud {
+    25% { transform: scaleY(1); }
+    50% { transform: scaleY(.4); }
+    75% { transform: scaleY(1.2); }
+}
+ 
+.boxContainer{
+    display: flex;
+    justify-content: space-between;
+    height: 64px;
+    --boxSize: 8px;
+    --gutter: 4px;
+    width: calc((var(--boxSize) + var(--gutter)) * 5);
+}
+  
+.box{
+    transform: scaleY(.4);
+    height: 100%;
+    width: var(--boxSize);;
+    background-image: linear-gradient(110deg, #B301FF, #FF019A 60%);
+    animation-duration: 1.2s;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: infinite;
+    border-radius: 8px;
+}
+  
+.box1, .box3, .box5 { animation-name: quiet; }
+.box2 { animation-name: normal; } 
+.box4 { animation-name: loud; }
+
+.hidden { display: none; }
