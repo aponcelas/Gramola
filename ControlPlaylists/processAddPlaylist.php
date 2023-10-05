@@ -1,25 +1,27 @@
 <?php
-session_start();
 
-// Verificar si se ha enviado el formulario
+// Comprovem si el mètode per enviar les dades és POST
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Obtener el nombre de la nueva playlist desde el formulario
-    $newPlaylistName = $_POST["playlist"];
 
-    // Verificar que el nombre de la playlist no esté vacío
-    if (!empty($newPlaylistName)) {
-        // Generar el nombre de archivo para la nueva playlist
-        $newPlaylistFileName = '../Playlists/' . strtolower(str_replace(" ", "_", $newPlaylistName)) . '.json';
+    // Creem la ruta de la nova playlist y la guardem a la variable $newPlaylistName
+    $newPlaylistName = '../Playlists/' . str_replace(" ", "_", $_POST["playlist"]) . '.json';
 
-        // Verificar si la playlist ya existe
-        if (!file_exists($newPlaylistFileName)) {
-            // Crear un archivo JSON vacío para la nueva playlist
-            file_put_contents($newPlaylistFileName, json_encode([]));
+    // Comprovem si ja existeix la playlist
+    if (!file_exists($newPlaylistName)) {
 
-            // Redirigir a index.php
-            header("Location: ../index.php");
-            exit();
-        } 
-    } 
+        // Si el fitxer no existeix, creem un fitxer JSON per a la nova playlist
+        file_put_contents($newPlaylistName, json_encode([]));
+
+        // Redirigir al reproductor de música
+        header("Location: ../index.php");
+        exit();
+    
+    // Si el fitxer existeix...
+    } else {
+
+        // Redirigim al formualari per crear playlists i indiquem un error de playlist duplicada a la URL
+        header("Location: AddPlaylist.php?error=duplicate_playlist");
+        exit();
+    }
 }
 ?>

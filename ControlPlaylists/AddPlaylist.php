@@ -11,24 +11,34 @@
 </head>
 <body>
 
+    <!--Contenidor principal-->
     <div class="container">
+
+        <!--Contenidor pel formulari-->
         <div class="container-card">
+
+            <!--Títol del formulari-->
             <h1>AFEGIR PLAYLIST</h1>
 
-                <form action="processAddPlaylist.php" method="post" class="form">
-                    <div class="label-input">
-                        <label for="playlist"><p>Playlist:</p></label>
-                        <input type="text" id="playlist" name="playlist" class="input-text" required>
-                    </div>
-                    
-                    <input type="submit" value="Afegir playlist" class="submit-button">
+            <!--Formulari que processa les dades per afegir una playlist nova-->
+            <form action="processAddPlaylist.php" method="post" class="form">
 
-                </form>
-
-                <div class="personal-info">
-                    <a href="../index.php"><i class="fas fa-arrow-left fa-2x"></i></a>
+                <!--Contenidor per la playlist-->
+                <div class="label-input">
+                    <label for="playlist"><p>Playlist:</p></label>
+                    <input type="text" id="playlist" name="playlist" class="input-text" required>
                 </div>
+                
+                <!--Input per enviar les dades del formulari-->
+                <input type="submit" value="Afegir playlist" class="submit-button">
+            </form>
 
+            <!--Contenidor pel reproductor de música-->
+            <div class="personal-info">
+
+                <!--Anar al reproductor de música-->
+                <a href="../index.php"><i class="fas fa-arrow-left fa-2x"></i></a>
+            </div>
         </div>
     </div>
 </body>
