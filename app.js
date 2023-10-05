@@ -71,7 +71,7 @@ function prevSong() {
     // Si l'index es mes gran a 0, restem -1 a l'index, sino index = ultima posició de la playlist
     (song_index > 0) ? song_index -= 1 : song_index = musicList.length - 1;
 }
-
+//dd
 // Funció per avançar a la següent cançó
 function nextSong() {
 
