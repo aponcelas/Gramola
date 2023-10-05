@@ -3,18 +3,18 @@
         "title": "Without Me",
         "artist": "Eminem",
         "url": "..\/URL\/Eminem  Without Me.mp3",
-        "cover": "Cover\/Without-Me.jpg"
+        "cover": "cover\/Without-Me.jpg"
     },
     {
         "title": "Lose Yourself",
         "artist": "Eminem",
         "url": "URL\/Eminem Lose Yourself.mp3",
-        "cover": "Cover\/Lose-Yourself.jpg"
+        "cover": "cover\/Lose-Yourself.jpg"
     },
     {
         "title": "Venom",
         "artist": "Eminem",
         "url": "..\/URL\/Eminem  Venom.mp3",
-        "cover": "..\/Cover\/Venom.jpg"
+        "cover": "..\/cover\/Venom.jpg"
     }
 ]

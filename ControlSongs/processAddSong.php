@@ -22,7 +22,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         "title" => $title,
         "artist" => $artist,
         "url" => "../URL/" . $_FILES['audio_url']['name'],
-        "cover" => "../Cover/" . $_FILES['cover_url']['name']
+        "cover" => "../cover/" . $_FILES['cover_url']['name']
     );
 
     // Afegim en nou array a la playlist
@@ -33,7 +33,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     // Movem les dades de tipus fitxer a la seva carpeta corresponent
     move_uploaded_file($_FILES['audio_url']['tmp_name'], "../URL/" . $_FILES['audio_url']['name']);
-    move_uploaded_file($_FILES['cover_url']['tmp_name'], "../Cover/" . $_FILES['cover_url']['name']);
+    move_uploaded_file($_FILES['cover_url']['tmp_name'], "../cover/" . $_FILES['cover_url']['name']);
 
     // Redirigir al reproductor de música
     header("Location: ../index.php");

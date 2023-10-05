@@ -148,8 +148,7 @@ random_btn.addEventListener('click', function() {
     playSong();
 });
 
-// Event que al modificar la posició de la barra de reproducció,
-// l'audio s'ajusta a la posició de la barra de reproducció
+// Event que al modificar la posició de la barra de reproducció, l'audio s'ajusta a la posició de la barra de reproducció
 seek_slider.addEventListener('change', function() {
     let seekToTime = curr_song.duration * (seek_slider.value / 100);
     curr_song.currentTime = seekToTime;
