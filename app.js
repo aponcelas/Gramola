@@ -20,6 +20,23 @@ let isPlaying = false;
 let isRandom = false;
 let updateTimer = 0;
 
+function loadTrack(indexTrack) {
+    clearInterval(updateTimer);
+    reset();
+
+    // Establim la cançó i la carreguem
+    curr_song.src = musicList[indexTrack].url;   
+    curr_song.load();
+
+    // Cargar de cover per la art-box
+    track_art.style.backgroundImage = "url(" + musicList[indexTrack].cover + ")";
+    track_art.style.backgroundSize = "250px 250px";
+
+    // Iniciem un nou temporitzador
+    updateTimer = setInterval(updateTimeSeekSlider, 1000);
+
+}
+
 // Funció que restableix la informació del temps i de la barra de reproducció
 function reset() {
     curr_time.textContent = "0:00";
@@ -136,18 +153,4 @@ seek_slider.addEventListener('change', function() {
 })
 
 // Event per caregar la primera cançó
-window.addEventListener("load", function() {
-    clearInterval(updateTimer);
-    reset();
-
-    // Establim la cançó i la carreguem
-    curr_song.src = musicList[song_index].url;   
-    curr_song.load();
-
-    // Cargar de cover per la art-box
-    track_art.style.backgroundImage = "url(" + musicList[song_index].cover + ")";
-    track_art.style.backgroundSize = "250px 250px";
-
-    // Iniciem un nou temporitzador
-    updateTimer = setInterval(updateTimeSeekSlider, 1000);
-});
+window.addEventListener("load", loadTrack(song_index));
