@@ -17,7 +17,6 @@ let selected_song = document.querySelector('#selected_song');
 // Declaració de variables
 let song_index = 0;
 let isPlaying = false;
-let isRandom = false;
 let updateTimer = 0;
 
 function loadTrack(indexTrack) {
@@ -127,7 +126,7 @@ playpause_btn.addEventListener('click', function() {
 
 // Event que al fer click canvia a la cancó anterior
 prev_btn.addEventListener('click', function() {
-    prevSong();s
+    prevSong();
     loadTrack(song_index);
     playSong();
 });
