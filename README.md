@@ -1,1 +1,2 @@
-# Gramola
+# 2DAW
+# PROJECTE 1 - LA GRAMOLA.
