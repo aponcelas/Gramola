@@ -154,5 +154,5 @@ seek_slider.addEventListener('change', function() {
     curr_song.currentTime = seekToTime;
 })
 
-// Carguem la primera cançó del reproductor
-loadTrack(song_index);
+// Event per caregar la primera cançó
+window.addEventListener("load", loadTrack(song_index));
